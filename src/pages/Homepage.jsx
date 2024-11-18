@@ -1,8 +1,10 @@
+import PostCardContainer from "../components/PostCardContainer";
+
 const Homepage = () => {
     return (
         <div>
-            <h1>Homepage</h1>
-        </div>
+          <PostCardContainer />
+      </div>
     )
 }
 
