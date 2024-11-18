@@ -1,19 +1,23 @@
-import './App.css'
+import { Route, RouterProvider, createRoutesFromElements, createBrowserRouter } from "react-router-dom";
+import Layout from "./components/Layout";
+import Homepage from "./pages/Homepage";
+import CreatePostPage from "./pages/CreatePostPage";
+import PostDetailsPage from "./pages/PostDetailsPage";
 
+const router = createBrowserRouter(createRoutesFromElements(
+  <Route path="/" element={<Layout />}>
+    <Route index element={<Homepage />} />
+    <Route path="/createPost" element={<CreatePostPage/>} />
+    <Route path="/postDetails" element={<PostDetailsPage />}>
+    </Route>
+  </Route>
+));
 function App() {
 
   return (
-    <>
-      <div>
-      <div class="text-3xl font-bold underline">
-  Hello, Tailwind!
-</div>
+      <RouterProvider router={router} />
+  ) 
 
-        
-      </div>
-      
-    </>
-  )
 }
 
-export default App
+export default App;
