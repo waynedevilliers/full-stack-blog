@@ -3,7 +3,7 @@ import Navbar from "./Navbar";
 import { Outlet } from "react-router-dom";
 const Layout = () => {
   return (
-    <div className="layout-container">
+    <div className="layout-container min-h-screen">
       <Navbar />
       <main className="flex flex-col items-center h-screen">
         <Outlet />
