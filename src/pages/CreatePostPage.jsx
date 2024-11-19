@@ -1,7 +1,8 @@
+import CreatePostContainer from "../components/CreatePostContainer";
 const CreatePostPage = () => {
     return (
         <div>
-            <h1>CreatePostPage</h1>
+            <CreatePostContainer />
         </div>
     )
 }

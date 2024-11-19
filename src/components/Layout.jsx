@@ -3,9 +3,9 @@ import Navbar from "./Navbar";
 import { Outlet } from "react-router-dom";
 const Layout = () => {
   return (
-    <div className="layout-container min-h-screen">
+    <div className="layout-container">
       <Navbar />
-      <main className="flex flex-col items-center h-screen">
+      <main className="flex flex-col items-center">
         <Outlet />
       </main>
       <Footer />
