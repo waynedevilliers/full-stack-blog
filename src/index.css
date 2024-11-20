@@ -2,3 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Add this to your main CSS file */
+.fixed {
+    position: fixed;
+  }
+  .bg-opacity-50 {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  .rounded-lg {
+    border-radius: 0.5rem;
+  }
+  .p-8 {
+    padding: 2rem;
+  }
+  
