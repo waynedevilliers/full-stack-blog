@@ -7,11 +7,11 @@ import PostDetailsPage from "./pages/PostDetailsPage";
 const router = createBrowserRouter(createRoutesFromElements(
   <Route path="/" element={<Layout />}>
     <Route index element={<Homepage />} />
-    <Route path="/createPost" element={<CreatePostPage/>} />
-    <Route path="/postDetails" element={<PostDetailsPage />}>
-    </Route>
+    <Route path="/createPost" element={<CreatePostPage />} />
+    <Route path="/postDetails/:id" element={<PostDetailsPage />} />
   </Route>
 ));
+
 function App() {
 
   return (

@@ -31,16 +31,6 @@ const Navbar = () => {
                             Create Post
                         </NavLink>
                     </li>
-                    <li>
-                        <NavLink
-                            to="/postDetails"
-                            className={({ isActive }) =>
-                                isActive ? "text-blue-400 font-semibold" : "hover:text-blue-300"
-                            }
-                        >
-                            Post Details
-                        </NavLink>
-                    </li>
                 </ul>
             </div>
         </div>
