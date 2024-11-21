@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "seed": "node seed/seed.js",
     "dev": "vite",
     "dev-server": "node --watch index.js",
     "start": "node index.js",

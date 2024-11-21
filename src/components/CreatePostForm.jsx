@@ -4,9 +4,10 @@ const CreatePostForm = ({ onSubmit }) => {
   const [formData, setFormData] = useState({
     title: "",
     description: "",
+    content: "",
     author: "",
     date: "",
-    imageUrl: "",
+    cover: "",
   });
 
   const handleChange = (e) => {
@@ -20,9 +21,10 @@ const CreatePostForm = ({ onSubmit }) => {
     setFormData({
       title: "",
       description: "",
+      content: "",
       author: "",
       date: "",
-      imageUrl: "",
+      cover: "",
     }); // Reset the form
   };
 
@@ -56,6 +58,17 @@ const CreatePostForm = ({ onSubmit }) => {
         />
       </div>
       <div className="mb-4">
+        <label className="block text-gray-700 font-medium">Content</label>
+        <textarea
+          name="description"
+          value={formData.content}
+          onChange={handleChange}
+          placeholder="Enter the description"
+          className="w-full p-2 border rounded"
+          required
+        />
+      </div>
+      <div className="mb-4">
         <label className="block text-gray-700 font-medium">Author</label>
         <input
           type="text"
@@ -79,11 +92,11 @@ const CreatePostForm = ({ onSubmit }) => {
         />
       </div>
       <div className="mb-4">
-        <label className="block text-gray-700 font-medium">Image URL</label>
+        <label className="block text-gray-700 font-medium">Image</label>
         <input
           type="text"
           name="imageUrl"
-          value={formData.imageUrl}
+          value={formData.cover}
           onChange={handleChange}
           placeholder="Enter the image URL"
           className="w-full p-2 border rounded"

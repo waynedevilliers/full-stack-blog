@@ -26,9 +26,9 @@ router.get("/:id", async (req, res) => {
 
 // Create a new post
 router.post("/", async (req, res) => {
-  const { title, description, author, date, imageUrl } = req.body;
+  const { title, description, content, author, date, imageUrl } = req.body;
 
-  if (!title || !description || !author || !date) {
+  if (!title || !description || !content || !author || !date) {
     return res.status(400).send("All fields are required.");
   }
 
@@ -36,6 +36,7 @@ router.post("/", async (req, res) => {
     const newPost = await Post.create({
       title,
       description,
+      content,
       author,
       date,
       imageUrl: imageUrl || "https://via.placeholder.com/300",
@@ -48,13 +49,13 @@ router.post("/", async (req, res) => {
 
 // Update a post
 router.put("/:id", async (req, res) => {
-  const { title, description, author, date, imageUrl } = req.body;
+  const { title, description, content, author, date, imageUrl } = req.body;
 
   try {
     const post = await Post.findByPk(req.params.id);
     if (!post) return res.status(404).send("Post not found");
 
-    await post.update({ title, description, author, date, imageUrl });
+    await post.update({ title, description, content, author, date, imageUrl });
     res.json(post);
   } catch (err) {
     res.status(500).send("Error updating post: " + err.message);

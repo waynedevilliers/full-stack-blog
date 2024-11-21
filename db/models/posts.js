@@ -15,6 +15,10 @@ const Post = sequelize.define('posts', {
         type: DataTypes.TEXT,
         allowNull: false
     },
+    content: {
+        type: DataTypes.TEXT,
+        allowNull: false
+    },
     author: {
         type: DataTypes.STRING,
         allowNull: false
@@ -23,7 +27,7 @@ const Post = sequelize.define('posts', {
         type: DataTypes.DATE,
         allowNull: false
     },
-    imageUrl: {
+    cover: {
         type: DataTypes.STRING,
         allowNull: false
     }   

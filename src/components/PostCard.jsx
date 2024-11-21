@@ -5,7 +5,7 @@ const PostCard = ({ post }) => {
     <Link to={`/postDetails/${post.id}`}>
       <div className="post-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow cursor-pointer">
         <img
-          src={post.imageUrl}
+          src={post.cover}
           alt={post.title}
           className="w-full h-48 object-cover"
         />
