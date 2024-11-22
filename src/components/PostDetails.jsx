@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 const PostDetails = ({ post, onDelete }) => {
@@ -16,8 +16,14 @@ const PostDetails = ({ post, onDelete }) => {
   const handleUpdateClick = () => {
     navigate(`/posts/${post.id}/update`);
   };
+
+  const handleClick = () => {
+    navigate("/");
+  };
+
   return (
-    <div className="post-details max-w-4xl mx-auto mt-10 p-4 bg-white rounded-lg shadow-lg">
+<div className="min-h-screen flex items-center justify-center">
+    <div className=" post-details max-w-4xl mx-auto mt-10 p-4 bg-white rounded-lg shadow-lg flex flex-col justify-center items-center">
       <img
         src={post.cover}
         alt={post.title}
@@ -31,13 +37,19 @@ const PostDetails = ({ post, onDelete }) => {
       {isLoggedIn ? (
         <div className="flex justify-center space-x-2">
           <button
-            className="bg-gray-500 hover:bg-blue-700 text-white px-4 py-2 rounded"
+            className="bg-blue-500 hover:bg-blue-700 text-white px-4 py-2 rounded"
+            onClick={handleClick}
+          >
+            Home
+          </button>
+          <button
+            className="bg-blue-500 hover:bg-blue-700 text-white px-4 py-2 rounded"
             onClick={handleUpdateClick}
           >
             Update
           </button>
           <button
-            className="bg-gray-500 hover:bg-red-700 text-white px-4 py-2 rounded"
+            className="bg-blue-500 hover:bg-red-700 text-white px-4 py-2 rounded"
             onClick={onDelete}
           >
             Delete
@@ -46,19 +58,20 @@ const PostDetails = ({ post, onDelete }) => {
       ) : (
         <div className="flex justify-center space-x-2">
           <button
-            className="bg-gray-500 hover:bg-blue-700 text-white px-4 py-2 rounded"
+            className="bg-blue-500 hover:bg-blue-700 text-white px-4 py-2 rounded"
             disabled
           >
             Update
           </button>
           <button
-            className="bg-gray-500 hover:bg-red-700 text-white px-4 py-2 rounded"
+            className="bg-blue-500 hover:bg-red-700 text-white px-4 py-2 rounded"
             disabled
           >
             Delete
           </button>
         </div>
       )}
+    </div>
     </div>
   );
 };

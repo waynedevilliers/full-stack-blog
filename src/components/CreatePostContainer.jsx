@@ -17,7 +17,7 @@ const CreatePostContainer = () => {
   };
 
   return (
-    <div className="create-post-container bg-gray-50 min-h-screen flex flex-col items-center pt-12 px-4">
+    <div className="create-post-container min-h-screen flex flex-col items-center pt-12 px-4">
       <h1 className="text-4xl font-bold text-gray-800 mb-8 text-center">
         Create a New Blog Post
       </h1>

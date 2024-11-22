@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import LoginForm from "./LoginForm";
+import SearchPosts from "./Search";
 
 const Navbar = () => {
   // Tracks if the modal (login/signup form) is open
@@ -32,7 +33,11 @@ const Navbar = () => {
       <div className="flex justify-between items-center">
         {/* Logo Section */}
         <div className="text-3xl font-bold">
-          <NavLink to="/">My Blog</NavLink>
+          <NavLink to="/">Lost Bearings...</NavLink>
+        </div>
+
+        <div className="flex items-center">
+          <SearchPosts />
         </div>
 
         {/* Navigation Links */}

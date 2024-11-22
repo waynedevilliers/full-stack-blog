@@ -31,7 +31,7 @@ const CreatePostForm = ({ onSubmit }) => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="create-post-form w-full max-w-lg mx-auto p-6 bg-white rounded-lg shadow-md"
+      className="create-post-form w-full p-6 bg-white rounded-lg shadow-md"
     >
       <h2 className="text-2xl font-bold mb-4">Create a New Post</h2>
       <div className="mb-4">
@@ -52,7 +52,7 @@ const CreatePostForm = ({ onSubmit }) => {
           name="description"
           value={formData.description}
           onChange={handleChange}
-          placeholder="Enter the description"
+          placeholder="Describe your blog post"
           className="w-full p-2 border rounded"
           required
         />
@@ -63,7 +63,7 @@ const CreatePostForm = ({ onSubmit }) => {
           name="description"
           value={formData.content}
           onChange={handleChange}
-          placeholder="Enter the description"
+          placeholder="Tell us about your travels"
           className="w-full p-2 border rounded"
           required
         />
@@ -95,7 +95,7 @@ const CreatePostForm = ({ onSubmit }) => {
         <label className="block text-gray-700 font-medium">Image</label>
         <input
           type="text"
-          name="imageUrl"
+          name="cover"
           value={formData.cover}
           onChange={handleChange}
           placeholder="Enter the image URL"

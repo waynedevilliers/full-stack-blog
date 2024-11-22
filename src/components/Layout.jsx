@@ -6,7 +6,7 @@ const Layout = () => {
   return (
     <div className="layout-container">
       <Navbar />
-      <main className="flex flex-col items-center">
+      <main className="flex flex-col items-center justify-center">
         <Outlet />
       </main>
       <Footer />

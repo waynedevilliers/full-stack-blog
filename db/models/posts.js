@@ -9,15 +9,24 @@ const Post = sequelize.define('posts', {
     },
     title: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
+        validate: {
+            len: [5, 255]
+        }
     },
     description: {
         type: DataTypes.TEXT,
-        allowNull: false
+        allowNull: false,
+        validate: {
+            len: [5, 1000]
+        }
     },
     content: {
         type: DataTypes.TEXT,
-        allowNull: false
+        allowNull: false,
+        validate: {
+            len: [10, 10000]
+        }   
     },
     author: {
         type: DataTypes.STRING,
