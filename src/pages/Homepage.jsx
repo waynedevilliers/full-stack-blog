@@ -1,11 +1,14 @@
+import { useOutletContext } from "react-router-dom";
 import PostCardContainer from "../components/PostCardContainer";
 
 const Homepage = () => {
-    return (
-        <div>
-          <PostCardContainer />
-      </div>
-    )
-}
+  const { filteredPosts } = useOutletContext();
 
-export default Homepage
+  return (
+    <div>
+      <PostCardContainer posts={filteredPosts} />
+    </div>
+  );
+};
+
+export default Homepage;

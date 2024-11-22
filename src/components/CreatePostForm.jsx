@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const CreatePostForm = ({ onSubmit }) => {
   const [formData, setFormData] = useState({
@@ -15,6 +16,7 @@ const CreatePostForm = ({ onSubmit }) => {
     setFormData({ ...formData, [name]: value });
   };
 
+  const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
     onSubmit(formData); // Pass form data to the parent component
@@ -26,12 +28,13 @@ const CreatePostForm = ({ onSubmit }) => {
       date: "",
       cover: "",
     }); // Reset the form
+    navigate("/");
   };
 
   return (
     <form
       onSubmit={handleSubmit}
-      className="create-post-form w-full p-6 bg-white rounded-lg shadow-md"
+      className="create-post-form w-full min-w-lg p-6 bg-white rounded-lg shadow-md"
     >
       <h2 className="text-2xl font-bold mb-4">Create a New Post</h2>
       <div className="mb-4">
@@ -60,7 +63,7 @@ const CreatePostForm = ({ onSubmit }) => {
       <div className="mb-4">
         <label className="block text-gray-700 font-medium">Content</label>
         <textarea
-          name="description"
+          name="content"
           value={formData.content}
           onChange={handleChange}
           placeholder="Tell us about your travels"

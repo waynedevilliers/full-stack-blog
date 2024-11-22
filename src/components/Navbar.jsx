@@ -1,48 +1,52 @@
 import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import LoginForm from "./LoginForm";
-import SearchPosts from "./Search";
 
-const Navbar = () => {
-  // Tracks if the modal (login/signup form) is open
+const Navbar = ({ onSearch }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  // Tracks if the user is logged in (initially check localStorage)
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [searchValue, setSearchValue] = useState(""); // State to track the input value
 
-  // Opens the login modal
   const handleLoginClick = () => setIsModalOpen(true);
 
-  // Logs out the user
   const handleLogout = () => {
-    localStorage.removeItem("isLoggedIn"); // Remove the logged-in state from localStorage
-    setIsLoggedIn(false); // Update the state
+    localStorage.removeItem("isLoggedIn");
+    setIsLoggedIn(false);
     alert("You have logged out successfully!");
   };
 
-  // Check if the user is logged in when the component mounts
+  const handleSearchInput = (e) => {
+    const query = e.target.value;
+    setSearchValue(query); // Update local state
+    onSearch(query); // Pass query to parent
+  };
+
   useEffect(() => {
     const loggedInStatus = localStorage.getItem("isLoggedIn");
     if (loggedInStatus === "true") {
-      setIsLoggedIn(true); // Set the login state if the user is logged in
+      setIsLoggedIn(true);
     }
   }, []);
 
   return (
     <div className="w-full bg-gray-800 text-white py-4 px-6">
       <div className="flex justify-between items-center">
-        {/* Logo Section */}
         <div className="text-3xl font-bold">
           <NavLink to="/">Lost Bearings...</NavLink>
         </div>
 
         <div className="flex items-center">
-          <SearchPosts />
+          {/* Add `value` attribute to display the typed input */}
+          <input
+            type="text"
+            placeholder="Search posts by title..."
+            value={searchValue} // Bind to local state
+            onChange={handleSearchInput} // Update local state and call parent function
+            className="border px-4 py-2 rounded text-black"
+          />
         </div>
 
-        {/* Navigation Links */}
         <ul className="flex space-x-8 items-center">
-          {/* Conditional Login/Logout Button */}
           <li>
             {isLoggedIn ? (
               <button
@@ -71,7 +75,6 @@ const Navbar = () => {
             </NavLink>
           </li>
           <li>
-            {/* Conditional Rendering of Create Post Button */}
             {isLoggedIn ? (
               <NavLink
                 to="/createPost"
@@ -82,10 +85,7 @@ const Navbar = () => {
                 <button className="hover:text-blue-300">Create Post</button>
               </NavLink>
             ) : (
-              <button
-                className="text-gray-500 cursor-not-allowed"
-                disabled
-              >
+              <button className="text-gray-500 cursor-not-allowed" disabled>
                 Create Post
               </button>
             )}
@@ -93,20 +93,16 @@ const Navbar = () => {
         </ul>
       </div>
 
-      {/* Login Modal */}
       {isModalOpen && (
         <div
           className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex justify-center items-center"
-          onClick={() => setIsModalOpen(false)} // Close modal on background click
+          onClick={() => setIsModalOpen(false)}
         >
           <div
             className="bg-white rounded-lg p-8 max-w-md w-full"
-            onClick={(e) => e.stopPropagation()} // Prevent modal from closing when clicking inside
+            onClick={(e) => e.stopPropagation()}
           >
-            <LoginForm
-              closeModal={() => setIsModalOpen(false)}
-              setIsLoggedIn={setIsLoggedIn} // Pass down login state handler
-            />
+            <LoginForm closeModal={() => setIsModalOpen(false)} setIsLoggedIn={setIsLoggedIn} />
           </div>
         </div>
       )}
@@ -115,6 +111,8 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+
 
 
 
